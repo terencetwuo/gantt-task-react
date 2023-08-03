@@ -59,6 +59,14 @@ export const TaskListHeaderDefault: React.FC<{
         >
           &nbsp;To
         </div>
+        <div
+          className={styles.ganttTable_HeaderItem}
+          style={{
+            minWidth: 50,
+          }}
+        >
+          &nbsp;Man Days
+        </div>
       </div>
     </div>
   );

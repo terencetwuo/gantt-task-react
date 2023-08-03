@@ -1,5 +1,7 @@
 import React from "react";
 import style from "./bar.module.css";
+import pstyles from "../project/project.module.css";
+// import { StandardTooltipContent } from "../../other/tooltip";
 
 type BarDisplayProps = {
   x: number;
@@ -29,8 +31,11 @@ export const BarDisplay: React.FC<BarDisplayProps> = ({
   progressWidth,
   barCornerRadius,
   styles,
-  onMouseDown,
+  onMouseDown
 }) => {
+  
+  // const tooltipContent = StandardTooltipContent;
+  
   const getProcessColor = () => {
     return isSelected ? styles.progressSelectedColor : styles.progressColor;
   };
@@ -59,6 +64,17 @@ export const BarDisplay: React.FC<BarDisplayProps> = ({
         ry={barCornerRadius}
         rx={barCornerRadius}
         fill={getProcessColor()}
+      />
+      <rect
+      onMouseEnter={() => alert('hover baseline')}
+        fill="#d3d3d3"
+        x={x-10}
+        width={width}
+        y={y + height - 1}
+        height={3}
+        rx={barCornerRadius}
+        ry={barCornerRadius}
+        className={pstyles.projectTop}
       />
     </g>
   );

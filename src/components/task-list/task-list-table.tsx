@@ -107,6 +107,15 @@ export const TaskListTableDefault: React.FC<{
             >
               &nbsp;{toLocaleDateString(t.end, dateTimeOptions)}
             </div>
+            <div
+              className={styles.taskListCell}
+              style={{
+                minWidth: 50,
+                maxWidth: rowWidth,
+              }}
+            >
+              &nbsp;3
+            </div>
           </div>
         );
       })}
