@@ -369,16 +369,11 @@ var TaskListTableDefault = function TaskListTableDefault(_ref) {
     }
 
     return React__default.createElement("div", {
+      className: styles$1.taskListTableRow,
       style: {
         height: rowHeight
       },
-      key: t.id + "row",
-      onDoubleClick: function onDoubleClick() {
-        return alert("Double click " + t.id);
-      },
-      onClick: function onClick() {
-        return alert("select row");
-      }
+      key: t.id + "row"
     }, React__default.createElement("div", {
       className: styles$1.taskListCell,
       style: {
