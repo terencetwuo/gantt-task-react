@@ -6,6 +6,7 @@ import pstyles from "../project/project.module.css";
 type BarDisplayProps = {
   x: number;
   y: number;
+  actualX?: number;
   width: number;
   height: number;
   isSelected: boolean;
@@ -24,6 +25,7 @@ type BarDisplayProps = {
 export const BarDisplay: React.FC<BarDisplayProps> = ({
   x,
   y,
+  actualX,
   width,
   height,
   isSelected,
@@ -65,17 +67,18 @@ export const BarDisplay: React.FC<BarDisplayProps> = ({
         rx={barCornerRadius}
         fill={getProcessColor()}
       />
-      <rect
-      onMouseEnter={() => alert('hover baseline')}
+      {actualX &&  <rect
+      // onMouseEnter={() => alert('hover baseline')}
         fill="#d3d3d3"
-        x={x-10}
-        width={width}
+        x={actualX}
+        width={100}
         y={y + height - 1}
-        height={3}
+        height={5}
         rx={barCornerRadius}
         ry={barCornerRadius}
         className={pstyles.projectTop}
-      />
+      />}
+     
     </g>
   );
 };

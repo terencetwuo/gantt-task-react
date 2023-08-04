@@ -153,18 +153,38 @@ const convertToBar = (
 ): BarTask => {
   let x1: number;
   let x2: number;
+  let actualX1: number | undefined;
+  let actualX2: number | undefined;
+
   if (rtl) {
     x2 = taskXCoordinateRTL(task.start, dates, columnWidth);
     x1 = taskXCoordinateRTL(task.end, dates, columnWidth);
+    if (task.actualStart && task.actualEnd) {
+      actualX2 = taskXCoordinateRTL(task.actualStart, dates, columnWidth);
+      actualX1 = taskXCoordinateRTL(task.actualEnd, dates, columnWidth);
+    }
   } else {
     x1 = taskXCoordinate(task.start, dates, columnWidth);
     x2 = taskXCoordinate(task.end, dates, columnWidth);
+    if (task.actualStart && task.actualEnd) {
+      actualX1 = taskXCoordinateRTL(task.actualStart, dates, columnWidth);
+      actualX2 = taskXCoordinateRTL(task.actualEnd, dates, columnWidth);
+    }
   }
   let typeInternal: TaskTypeInternal = task.type;
-  if (typeInternal === "task" && x2 - x1 < handleWidth * 2) {
-    typeInternal = "smalltask";
-    x2 = x1 + handleWidth * 2;
-  }
+  if (typeInternal === "task") {
+    if (x2 - x1 < handleWidth * 2) {
+      typeInternal = "smalltask";
+      x2 = x1 + handleWidth * 2;
+    }
+
+    if (actualX1 && actualX2) {
+      if (actualX2 - actualX1 < handleWidth * 2) {
+        typeInternal = "smalltask";
+        actualX2 = actualX1 + handleWidth * 2;
+      }
+    }
+  } 
 
   const [progressWidth, progressX] = progressWithByParams(
     x1,
@@ -187,6 +207,8 @@ const convertToBar = (
     typeInternal,
     x1,
     x2,
+    actualX1,
+    actualX2,
     y,
     index,
     progressX,
