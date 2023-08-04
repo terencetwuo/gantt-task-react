@@ -71,7 +71,7 @@ export const BarDisplay: React.FC<BarDisplayProps> = ({
       // onMouseEnter={() => alert('hover baseline')}
         fill="#d3d3d3"
         x={actualX}
-        width={100}
+        width={200}
         y={y + height - 1}
         height={5}
         rx={barCornerRadius}

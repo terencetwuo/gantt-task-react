@@ -1650,7 +1650,7 @@ var BarDisplay = function BarDisplay(_ref) {
   }), actualX && React.createElement("rect", {
     fill: "#d3d3d3",
     x: actualX,
-    width: 100,
+    width: 200,
     y: y + height - 1,
     height: 5,
     rx: barCornerRadius,
